@@ -5,6 +5,7 @@ const cors = require("cors");
 
 // Import routes
 const authRoutes = require("./Src/Routes/userRoutes");
+const todoRoutes = require("./Src/Routes/todoRoutes");
 
 // Import error handler middleware
 const errorHandler = require("./Src/Utils/errorHandler");
@@ -29,6 +30,7 @@ Server.use(
 
 // Routes
 Server.use("/api/v1/user/", authRoutes);
+Server.use("/api/v1/todo/", todoRoutes);
 
 // Default route
 Server.get("/", (req, res) => {
