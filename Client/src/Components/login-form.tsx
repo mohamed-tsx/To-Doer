@@ -35,7 +35,7 @@ export function LoginForm({
       }
       toast.success(userData.message);
       saveUserInfo(userData.user);
-      navigate("/dashboard");
+      navigate("/");
     } catch (err: any) {
       setError(err.message);
     } finally {

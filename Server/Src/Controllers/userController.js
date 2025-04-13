@@ -5,6 +5,7 @@ const {
   createNewUser,
 } = require("../Services/userServices");
 const { generateToken } = require("../Helpers/generateToken");
+const Prisma = require("../Config/database");
 
 const Register = asyncHandler(async (req, res) => {
   const { name, username, email, password, avatar } = req.body;
@@ -76,7 +77,7 @@ const Login = asyncHandler(async (req, res) => {
 
 const me = asyncHandler(async (req, res) => {
   const { email } = req.user;
-  const user = await prisma.user.findUnique({
+  const user = await Prisma.user.findUnique({
     where: {
       email,
     },
@@ -98,8 +99,19 @@ const me = asyncHandler(async (req, res) => {
   });
 });
 
+const logout = asyncHandler(async (req, res) => {
+  res.clearCookie("token", {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+  });
+
+  return res.json({ message: "Logged out successfully" });
+});
+
 module.exports = {
   Register,
   Login,
   me,
+  logout,
 };

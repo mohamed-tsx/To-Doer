@@ -11,10 +11,10 @@ interface LoginResponse {
   message: string;
   user: {
     id: string;
+    name: string;
     username: string;
-    fullname: string;
-    phoneNumber: string;
-    role: string;
+    email: string;
+    avatar: string;
   };
 }
 

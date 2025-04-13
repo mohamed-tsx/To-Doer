@@ -4,10 +4,10 @@ import { createJSONStorage, persist } from "zustand/middleware";
 
 interface UserType {
   id: string;
-  fullname: string;
+  name: string;
   username: string;
-  phoneNumber: string;
-  role: string;
+  email: string;
+  avatar: string;
 }
 
 type UserStore = {
@@ -33,7 +33,7 @@ export const useUser = create<UserStore>()(
       // ✅ Check User Authentication Status via `/auth/me`
       checkAuth: async () => {
         try {
-          const response = await api.get<UserType>("api/users/me", {
+          const response = await api.get<UserType>("api/v1/user/me", {
             withCredentials: true,
           });
           set({ user: response.data, isAuthenticated: true });
@@ -46,7 +46,7 @@ export const useUser = create<UserStore>()(
       // ✅ Logout and Clear User Data
       logout: () => {
         api
-          .post("api/users/logout", {}, { withCredentials: true })
+          .post("api/v1/user/logout", {}, { withCredentials: true })
           .catch((err: any) => console.error("Logout error:", err));
 
         set(() => ({ user: null, isAuthenticated: false }));
