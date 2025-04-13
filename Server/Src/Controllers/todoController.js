@@ -20,6 +20,7 @@ const createTodo = asyncHandler(async (req, res) => {
 
   res.status(201).json({
     success: true,
+    message: "Todo created successfully.",
     todos,
   });
 });

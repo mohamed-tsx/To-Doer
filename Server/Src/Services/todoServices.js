@@ -1,7 +1,7 @@
 const Prisma = require("../Config/database");
 
 const getUserTodosService = async (userId) => {
-  return Prisma.todo.findMany({ where: { userId } });
+  return await Prisma.todo.findMany({ where: { userId } });
 };
 
 const createTodoService = async (userId, title, description) => {
