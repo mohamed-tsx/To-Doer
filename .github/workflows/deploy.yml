@@ -27,8 +27,11 @@ jobs:
 
             echo "📁 Backend setup"
             npm install
+            cd Server
             npx prisma generate
             npx prisma migrate deploy
+            cd ..
+            echo "🔄 Restart backend"
             pm2 restart todo-backend
 
             echo "🌐 Frontend build"
