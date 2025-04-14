@@ -53,7 +53,7 @@ export function LoginForm({
       <div className="flex flex-col items-center gap-2 text-center">
         <h1 className="text-2xl font-semibold">Login to your account</h1>
         <p className="text-muted-foreground text-sm">
-          Enter your credentials below to log in to your account
+          Enter your credentials below to log in to your account.
         </p>
       </div>
       <div className="grid gap-6">
