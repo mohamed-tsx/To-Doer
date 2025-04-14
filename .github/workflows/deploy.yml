@@ -35,6 +35,6 @@ jobs:
             pm2 restart todo-backend
 
             echo "🌐 Frontend build"
-            cd ../Client
+            cd Client
             npm install
             npm run build
