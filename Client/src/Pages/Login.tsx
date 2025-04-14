@@ -11,7 +11,7 @@ const Login = () => {
             <div className="flex h-6 w-6 items-center justify-center rounded-md bg-primary text-primary-foreground">
               <img src={COMPANY_LOGO_URL} alt="" />
             </div>
-            Halane Market.
+            To Doer.
           </a>
         </div>
         <div className="flex flex-1 items-center justify-center">
