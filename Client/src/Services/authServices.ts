@@ -5,6 +5,13 @@ interface LoginRequest {
   username: string;
   password: string;
 }
+interface RegisterRequest {
+  username: string;
+  password: string;
+  name: string;
+  email: string;
+  avatar: string;
+}
 
 interface LoginResponse {
   success: boolean;
@@ -38,5 +45,28 @@ export const loginUser = async (
       error.response?.data?.message || error.message
     );
     throw new Error(error.response?.data?.message || "Login failed");
+  }
+};
+
+// ✅ Login Function
+export const RegisterUser = async (
+  credentials: RegisterRequest
+): Promise<LoginResponse> => {
+  try {
+    const response = await api.post<LoginResponse>(
+      "api/v1/user/register",
+      credentials,
+      {
+        withCredentials: true, // ✅ Ensures cookies are sent and received
+      }
+    );
+
+    return response.data;
+  } catch (error: any) {
+    console.error(
+      "Registration failed:",
+      error.response?.data?.message || error.message
+    );
+    throw new Error(error.response?.data?.message || "Registration failed");
   }
 };
